@@ -1,0 +1,37 @@
+'use strict';
+
+class Config{
+
+  static get dbString(){
+
+    return 'mongodb://localhost:27017/ticketing-du-fun';
+
+  }
+
+  static get isHttps(){
+
+    return false;
+
+  }
+
+  static get apiBaseUrl(){
+
+    return '/api';
+
+  }  
+
+  static get srvPort(){
+
+    return 8080;
+
+  }
+
+  static get appSecret(){
+
+    return 'CEinidsfg()**FsodpfJOI$àfds$àWE0wfnisf!$$';
+
+  }
+  
+}
+
+export default Config;
