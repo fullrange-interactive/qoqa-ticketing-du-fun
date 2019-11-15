@@ -1,0 +1,18 @@
+.joke-ticket{
+
+  width: 8cm;
+  height: 8cm;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  .the-joke{
+
+    font-size: 20pt;
+
+  }
+
+}
