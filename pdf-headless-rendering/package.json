@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start_dev": "node --inspect --experimental-modules src/main.mjs"
+    "start_dev": "node --inspect --es-module-specifier-resolution=node --experimental-modules src/main.mjs"
   },
   "author": "",
   "license": "ISC",
