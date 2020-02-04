@@ -36,7 +36,7 @@ class TicketContainer extends Component {
         {/* PdfRendererFetcher wait until load-end is in the DOM.*/}
         {this.state.loaded && <span className="load-end"></span>}
 
-        <QOfferTicket onLoaded={this.onLoaded.bind(this)}/>
+        <JokeTicket onLoaded={this.onLoaded.bind(this)}/>
 
       </div>
 
