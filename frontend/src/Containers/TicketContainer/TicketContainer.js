@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 
+import Tool from 'Classes/Tool';
+
 import JokeTicket from 'Components/Tickets/JokeTicket/JokeTicket';
 import QOfferTicket from 'Components/Tickets/QOfferTicket/QOfferTicket';
 
 import './TicketContainer.scss';
+
+const tickets = [
+  {
+    content: (onError, onLoaded) => <QOfferTicket onError={onError} onLoaded={onLoaded}/>
+  },
+  {
+    content: (onError, onLoaded) => <JokeTicket onError={onError} onLoaded={onLoaded}/>
+  }  
+]
 
 class TicketContainer extends Component {
 
@@ -13,7 +24,8 @@ class TicketContainer extends Component {
 
     this.state = {
 
-      loaded: false
+      loading: true,
+      selectedTicket: tickets[Tool.randomIntBetween(0, tickets.length)]
 
     }
 
@@ -22,8 +34,14 @@ class TicketContainer extends Component {
   onLoaded(){
 
     this.setState({
-      loaded: true
+      loading: false
     })
+
+  }
+
+  onError(e){
+
+    console.error(e);
 
   }
 
@@ -34,9 +52,9 @@ class TicketContainer extends Component {
       <div>
 
         {/* PdfRendererFetcher wait until load-end is in the DOM.*/}
-        {this.state.loaded && <span className="load-end"></span>}
+        {!this.state.loading && <span className="load-end"></span>}
 
-        <JokeTicket onLoaded={this.onLoaded.bind(this)}/>
+        {this.state.selectedTicket.content(this.onError.bind(this), this.onLoaded.bind(this))}
 
       </div>
 

@@ -1,8 +1,8 @@
 class Config {
 
-  static get apiUrl() {
+  static get qoqaApiEndpointUrl() {
   
-    return "https://wedding-planner.fullrange.ch:9090/api"
+    return "https://api.qoqa.ch/v1";
 
   }
 
