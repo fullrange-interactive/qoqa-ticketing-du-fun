@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "artnet": "^1.4.0",
     "onoff": "^5.0.0"
   }
 }
