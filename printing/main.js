@@ -8,7 +8,15 @@ const led = new Gpio(4, 'out');
 buttonBaseOutput.writeSync(0);
 led.writeSync(1);
 
+let printing = false;
+
 button.watch((err, value) => {
+
+  if (printing) {
+    return;
+  }
+
+  printing = true;
 
   const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 200);
 
@@ -16,6 +24,8 @@ button.watch((err, value) => {
   exec("./printTicket.sh", // command line argument directly in string
     function (error, stdout, stderr) {      // one easy function to capture data/errors
 
+
+      printing = false;
       clearInterval(iv);
       led.writeSync(1);
 
