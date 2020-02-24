@@ -1,5 +1,5 @@
 let artnet = require('artnet')({
-	host: '10.7.208.146' // This is the IP address of your Artnet -> DMX interface
+	host: '10.0.1.154' // This is the IP address of your Artnet -> DMX interface
 });
 
 // The DMX address on which you LED is connected
@@ -7,11 +7,11 @@ const DMX_LED_ADDRESS = 1;
 
 // For my LED , this is: Dimmer, R, G, B
 // Change to whatever is appropriate for your light
-const VALUE_ON = [255, 255, 0, 0];
+const VALUE_ON = [255, 0, 0, 255,255];
 
 // If you want the LED  to have some other value
 // when it's "off"
-const VALUE_OFF = [255, 0, 255 ,0];
+const VALUE_OFF = [255, 0, 0 ,255, 0];
 
 // How long the light should remain on, in milliseconds
 const ON_DURATION = 10000;
