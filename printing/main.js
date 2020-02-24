@@ -1,12 +1,12 @@
 const exec = require('child_process').exec;
 
 if (process.argv.indexOf('simulation') === -1) {
-  let Gpio = require('onoff').Gpio;
+  var Gpio = require('onoff').Gpio;
 }
 
 // START CUSTOMIZATION
 let artnet = require('artnet')({
-  host: '10.0.1.154' // This is the IP address of your Artnet -> DMX interface
+  host: '10.0.1.220' // This is the IP address of your Artnet -> DMX interface
 });
 
 
@@ -32,9 +32,9 @@ const BLINK_PERIOD = 500;
 
 if (process.argv.indexOf('simulation') === -1) {
 
-  const button = new Gpio(2, 'in', 'falling', {debounceTimeout: 30});
-  const buttonBaseOutput = new Gpio(3, 'out');
-  const led = new Gpio(4, 'out');
+  var button = new Gpio(2, 'in', 'falling', {debounceTimeout: 30});
+  var buttonBaseOutput = new Gpio(3, 'out');
+  var led = new Gpio(4, 'out');
 
   buttonBaseOutput.writeSync(0);
   led.writeSync(1);
@@ -55,7 +55,7 @@ function print() {
   blinkDuration = 0;
 
   if (process.argv.indexOf('simulation') === -1) {
-    const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 50);
+    var iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 50);
   }
 
   console.log("Button pressed !");
@@ -81,7 +81,7 @@ function print() {
 }
 
 if (process.argv.indexOf('simulation') === -1) {
-  button.watch((err, value) => print);
+  button.watch(print);
 } else {
   process.stdin.on('data', print);
 }
