@@ -18,7 +18,7 @@ button.watch((err, value) => {
 
   printing = true;
 
-  const iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 200);
+  let iv = setInterval(_ => led.writeSync(led.readSync() ^ 1), 200);
 
   console.log("Button pressed !");
   exec("./printTicket.sh", // command line argument directly in string
